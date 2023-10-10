@@ -1,0 +1,98 @@
+@font-face {
+  font-family: poppins2;
+  src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: poppins3;
+  src: url(../fonts/Poppins/Poppins-LightItalic.ttf);
+}
+.mainBox {
+  margin: 10px;
+  border-radius: 10px;
+  background-color:   rgba(138, 20, 79, 0.04);
+
+  padding: 10px;
+  width: 48%;
+  max-height: 440px;
+  font-family: poppins;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-family: poppins2;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(224, 0, 112, 0.073);
+  position: relative;
+
+}
+
+@media (max-width: 1900px) {
+  .mainBox {
+    height: 400px;
+    width: 100%;
+    height: fit-content;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+  }
+  .img {
+    max-width: 60%;
+  }
+}
+.mainBox:hover {
+  background-color: rgb(220, 238, 255);
+  transition: 0.7s;
+}
+.textData {
+  width: 95%;
+  margin: 10px;
+  overflow: hidden;
+}
+.bookMarks{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  right: 20px;
+  top: -2px;
+  border-radius: 0 0 5px 5px ;
+  padding:8px ;
+}
+.svgIcon{
+  fill: rgb(187, 0, 93);
+
+}
+.img {
+  width: 98%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.heading {
+  font-family: poppins2;
+  font-size: 25px;
+}
+.author {
+  font-family: poppins3;
+}
+
+
+.favoriteBox {
+  margin: 10px;
+  border-radius: 10px;
+  background-color:   rgba(138, 20, 79, 0.04);
+
+  padding: 10px;
+  width: 400px;
+  max-height: 440px;
+  font-family: poppins;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-family: poppins2;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(224, 0, 112, 0.073);
+  position: relative;
+
+}

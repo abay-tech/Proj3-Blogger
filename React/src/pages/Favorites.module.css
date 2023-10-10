@@ -1,0 +1,17 @@
+.mainDiv{
+    padding-top: 60px;
+    display: flex;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.loaderLayer{
+    position: fixed;
+    height: 100vh;;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: poppins_light;
+}

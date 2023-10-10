@@ -1,0 +1,167 @@
+.mainBox {
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-image: url("../photos/img2.jpg");
+  background-position: center;
+  font-family: poppins;
+}
+.bodyBox {
+  height: 100vh;
+  width: 1000px;
+  position: fixed;
+  word-wrap: break-word;
+  color: white;
+  padding-left: 20px;
+}
+.element0 {
+  margin-top: 20px;
+
+  font-size: 30;
+}
+.element1 {
+  font-size: 60px;
+  margin-top: 200px;
+}
+.element2 {
+  margin-top: 20px;
+  font-size: 40px;
+  color: rgb(225, 0, 255);
+}
+.element3 {
+  position: fixed;
+  bottom: 5px;
+  font-size: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.intreactionBox {
+  border-width: 0;
+  height: 100vh;
+  width: 600px;
+
+  position: fixed;
+  right: calc(-90px);
+  padding-right: 90px;
+  border-radius: 90px;
+  background-color: rgba(175, 175, 175, 0.329);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intreactionBox_copy {
+  border-width: 0;
+  height: 100vh;
+  width: 600px;
+
+  position: fixed;
+  right: calc(-90px);
+  padding-right: 90px;
+
+  border-radius: 90px;
+  background-color: rgb(68, 0, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: poppins;
+}
+.actionCard {
+  padding: 20px 25px 25px 25px;
+  border-radius: 18px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginlabel {
+  font-size: 28px;
+}
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputFormBlock {
+  padding-top: 10px;
+}
+
+.inputFormBlock label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: calc(-4px);
+}
+.inputFormBlockinput {
+  border-radius: 8px;
+  border-style: solid;
+  border-color: rgba(0, 0, 255, 0.137);
+  padding: 6px;
+  min-width: 250px;
+}
+.inputFormBlockinput:active {
+  border-radius: 10px;
+}
+.inputFormBlockinput:focus {
+  outline-color: rgba(0, 0, 255, 0.603);
+}
+.InputFormLoginError {
+  border-radius: 8px;
+  border-style: solid;
+  border-color: rgba(0, 0, 255, 0.137);
+  padding: 6px;
+  min-width: 250px;
+  border-color: rgba(255, 0, 0, 0.295);
+  outline-color: rgba(255, 0, 0, 0.295);
+}
+
+.inputFormButton {
+  margin-top: 15px;
+  border-style: solid;
+  border-radius: 8px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-color: rgba(0, 0, 255, 0.26);
+  padding: 5px 15px 5px 15px;
+}
+.inputFormButton:hover {
+  color: white;
+  background-color: rgb(98, 0, 255);
+}
+.inputFormButton:active {
+  color: white;
+  background-color: rgb(66, 0, 173);
+}
+
+.loginMethods img {
+  margin: 20px 15px 15px 15px;
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+}
+.signUpButton {
+  padding-left: 5px;
+  color: blue;
+  cursor: pointer;
+}
+.signUpButton:hover {
+  text-decoration: underline;
+}
+.icon {
+  width: 30px;
+  cursor: pointer;
+}
+.loginErrorPromptOn {
+  color: red;
+  visibility: visible;
+}
+.loginErrorPromptOff {
+  color: red;
+  visibility: hidden;
+}

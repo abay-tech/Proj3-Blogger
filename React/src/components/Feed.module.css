@@ -1,0 +1,45 @@
+.mainBody {
+  min-width: 600px;
+  max-width: 2000px;
+  flex-grow: 1;
+  overflow-y: scroll;
+  height: 97vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  z-index: 5;
+  padding: 0 5px 25px 5px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.finalBlock{
+  width:48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lastElement {
+  margin: 1px 0 10px 0;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  font-family: poppins;
+}
+.worryImage {
+  height: 38px;
+  margin-right: 10px;
+  animation-name: spinnerAnimation;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-direction:normal;
+  animation-timing-function:cubic-bezier();
+}
+@keyframes spinnerAnimation {
+  25% {transform: rotateZ(-10deg);}
+  
+  75% {
+    transform:rotateZ(10deg);
+  }
+
+}

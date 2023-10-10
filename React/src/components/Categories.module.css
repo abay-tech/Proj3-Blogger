@@ -1,0 +1,48 @@
+.mainBody {
+  min-width: 250px;
+  max-width: 250px;
+  display: block;
+  padding: 20px 10px 10px 10px;
+  font-family: poppins;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.068);
+
+}
+.heading {
+  margin-bottom: 25px;
+}
+.searchBox {
+  margin: 5px 5px 10px 5px;
+  padding: 5px;
+  border-color: rgba(0, 0, 0, 0.13);
+  border-radius: 8px;
+  outline-color: rgba(0, 0, 0, 0.205);
+}
+.categoryDataBlock {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+.selectedCategory{
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.288);
+}
+.categoryDataBlock:hover{
+  background-color: rgba(128, 128, 128, 0.068);
+  transition: .2s;
+}
+
+.categoryImage {
+  width: 20px;
+  margin-right: 5px;
+    border-radius: 10px;
+  
+}
+.moreCategories {
+  cursor: pointer;
+}

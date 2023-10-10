@@ -1,0 +1,40 @@
+.mainBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.781);
+  overflow-y: scroll;
+  z-index: 5;
+}
+.content {  
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  margin: 60px 70px 30px 70px;
+  border-radius: 8px;
+  padding: 10px;
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+}
+.img {
+  width: 70%;
+  max-height: 650px;
+  object-fit:contain;
+  border-radius: 8px;
+  background-color: aliceblue;
+}
+.closeButton {
+
+  border-style: solid;
+  border-radius: 20px;
+  fill: grey;
+  border-color: grey;
+}
+.block2{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

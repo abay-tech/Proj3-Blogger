@@ -1,0 +1,35 @@
+.mainBody {
+  max-width: 400px;
+  min-width: 400px;
+  height: 100vh;
+  padding: 20px 10px 10px 10px;
+  font-family: poppins;
+  background-color: rgba(128, 128, 128, 0.068);
+  overflow-y:scroll;
+}
+.heading {
+  margin-bottom: 25px;
+}
+.content {
+  font-size: 15px;
+  cursor: pointer;
+}
+.contentHeading {
+  border-radius: 8px;
+  padding: 2px
+}
+.contentHeading:hover {
+  background-color: rgba(128, 128, 128, 0.068);
+  transition: .2s;
+}
+
+.content hr {
+  margin: 10px;
+  padding: 0;
+}
+@media (max-width: 1300px) {
+  .mainBody{
+    display: none;
+  }
+}
+
