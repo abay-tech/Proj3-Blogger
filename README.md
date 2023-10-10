@@ -8,5 +8,5 @@
 
 
 
-Entirely build with react and c# with a local MSSQL server
+Entirely build with react and c# with a local MSSQL server.
 I'm still upgrading the project. So stay tuned!!
