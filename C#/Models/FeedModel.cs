@@ -11,5 +11,7 @@
         public string category_name { get; set;}
         public string image_link { get; set; }
 
+
+
     }
 }

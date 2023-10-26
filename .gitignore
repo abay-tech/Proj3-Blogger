@@ -2,3 +2,11 @@
 
 C\#/.vs/ProjectEvaluation/
 C\#/obj/Debug/net6.0/
+*.dll
+*.vsidx
+*.vsidx
+*.bin
+*.cache
+*.bin
+*.pdb
+*.vsidx

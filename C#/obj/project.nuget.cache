@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FJ4QhxyCEAp7jBEKPew577UQGWlGhAzbTB2l2+7D3PydH7qTe2+XkLqQKNZ97zgtOQhO75WmbQu9SZSjemin0A==",
+  "dgSpecHash": "zDzt08Fjt3SlhKkIvCIsKEGdOsMUA0a9TEziMsKfve/Kl99bHFsTKsX/cj8oax6KeDE4UviePD1YlmDQD8SSng==",
   "success": true,
-  "projectFilePath": "A:\\Abay\\Coding\\Projects\\Proj3-Blog\\Blogger-C#\\Blogger-C#.csproj",
+  "projectFilePath": "A:\\Abay\\Coding\\Projects\\Proj3-Blog\\Proj3-Blogger\\C#\\Blogger-C#.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abayr\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\abayr\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
