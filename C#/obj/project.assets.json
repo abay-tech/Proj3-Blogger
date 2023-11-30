@@ -146,6 +146,32 @@
             "rid": "win"
           }
         }
+      },
+      "DataAccessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/DataAccessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccessLayer.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DataAccessLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -462,10 +488,21 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "path": "../DataLinkLayer/DataAccessLayer.csproj",
+      "msbuildProject": "../DataLinkLayer/DataAccessLayer.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Services >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -495,7 +532,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "A:\\Abay\\Coding\\Projects\\Proj3-Blog\\Proj3-Blogger\\Services\\Services.csproj": {
+              "projectPath": "A:\\Abay\\Coding\\Projects\\Proj3-Blog\\Proj3-Blogger\\Services\\Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,0 +1,15 @@
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\bin\Debug\net6.0\Services.deps.json
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\bin\Debug\net6.0\Services.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\bin\Debug\net6.0\Services.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\bin\Debug\net6.0\DataAccessLayer.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\bin\Debug\net6.0\DataAccessLayer.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\refint\Services.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\Services.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\Services\obj\Debug\net6.0\ref\Services.dll

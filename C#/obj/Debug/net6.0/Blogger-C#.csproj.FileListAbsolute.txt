@@ -64,3 +64,7 @@ A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\obj\Debug\net6.0\refint\Blog
 A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\obj\Debug\net6.0\Blogger-C#.pdb
 A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\obj\Debug\net6.0\Blogger-C#.genruntimeconfig.cache
 A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\obj\Debug\net6.0\ref\Blogger-C#.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\bin\Debug\net6.0\DataAccessLayer.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\bin\Debug\net6.0\Services.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\bin\Debug\net6.0\Services.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\C#\bin\Debug\net6.0\DataAccessLayer.pdb

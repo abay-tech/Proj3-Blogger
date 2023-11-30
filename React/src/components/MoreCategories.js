@@ -29,6 +29,7 @@ function MoreCategories(props) {
 
           <div onClick={props.toggleMoreCategories}>
             <svg
+              className={classes.closeSVG}
               xmlns="http://www.w3.org/2000/svg"
               height="32"
               viewBox="0 -960 960 960"

@@ -1,0 +1,12 @@
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\bin\Debug\net6.0\DataAccessLayer.deps.json
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\bin\Debug\net6.0\DataAccessLayer.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\bin\Debug\net6.0\DataAccessLayer.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.csproj.AssemblyReference.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfoInputs.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfo.cs
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\DataAccessLayer.pdb
+A:\Abay\Coding\Projects\Proj3-Blog\Proj3-Blogger\DataLinkLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll

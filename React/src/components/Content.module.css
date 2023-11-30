@@ -6,7 +6,9 @@
   height: 100%;
   background-color: rgba(128, 128, 128, 0.781);
   overflow-y: scroll;
-  z-index: 5;
+  z-index: 5;  
+  cursor: default;
+
 }
 .content {  
   background-color: rgb(255, 255, 255);
@@ -27,12 +29,16 @@
   background-color: aliceblue;
 }
 .closeButton {
-
+  min-width: 38px;
+cursor: pointer;
   border-style: solid;
   border-radius: 20px;
   fill: grey;
   border-color: grey;
 }
+.closeButton:hover{
+  background-color: rgba(128, 128, 128, 0.081);
+ }
 .block2{
     display: flex;
     justify-content: center;
