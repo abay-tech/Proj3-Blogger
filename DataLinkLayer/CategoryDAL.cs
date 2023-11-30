@@ -25,7 +25,7 @@ namespace DataAccessLayer
                 return null;
             }
         }
-        public List<CategoryModel>? RequestQuery(SqlConnection connection, string query)
+        public List<CategoryModel>? ExecuteQuery(SqlConnection connection, string query)
         {
             List<CategoryModel> categoryList = new List<CategoryModel>();
             try
@@ -59,7 +59,7 @@ namespace DataAccessLayer
             }
             else{
                 string query = $"select top 10 * from proj3_categorydata order by 'hits' desc ;";
-                return RequestQuery(connection, query);
+                return ExecuteQuery(connection, query);
             }           
         }
         public List<CategoryModel>? GetAllDAL()
@@ -70,7 +70,7 @@ namespace DataAccessLayer
             }
             else{
                 string query = $"select * from proj3_categorydata order by 'category_name' ;";
-                return RequestQuery(connection, query);
+                return ExecuteQuery(connection, query);
             }
         }
 
