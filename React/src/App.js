@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import { createContext,useState } from "react";
 import Favorites from "./pages/Favorites";
+import CreateUser from "./pages/CreateUser";
 
 export const feedContext = createContext();
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/create" element={<Create />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/createUser" element={<CreateUser/>} />
 
         </Routes>
       </BrowserRouter>{" "}

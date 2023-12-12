@@ -14,17 +14,22 @@ namespace Services
         public FeedService() { 
             _feedDAL=new DataAccessLayer.FeedDAL();
         }
-        public List<FeedModel>? GetList(int skipNum, int category_id)
+        public async Task<List<FeedModel>?> GetListAsync(int skipNum, int category_id)
         {
-            return _feedDAL.GetListDAL(skipNum, category_id);
+            var data=await _feedDAL.GetListDALAsync(skipNum, category_id);
+            return data;
         }
-        public List<FeedModel> GetFeedDataFav(string feedIds)
+        public async Task<List<FeedModel>?> GetFeedDataFavAsync(string feedIds)
         {
-            return _feedDAL.GetFeedDataFavDAL(feedIds);
+            var data = await _feedDAL.GetFeedDataFavDALAsync(feedIds);
+            return data;
+
         }
-        public List<FeedModel> GetTopFeeds() 
+        public async Task<List<FeedModel>?> GetTopFeedsAsync() 
         {
-            return _feedDAL.GetTopFeedsDAL();
+            var data = await _feedDAL.GetTopFeedsDALAsync();
+            return data;
+
         }
     }
 }

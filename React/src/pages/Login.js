@@ -3,6 +3,7 @@ import google from "../icons/google.png";
 import facebook from "../icons/facebook.png";
 import { useState, useRef } from "react";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [loginError, setLoginError] = new useState(false);
@@ -19,7 +20,7 @@ function Login() {
       password: passwordRef.current.value,
     };
 
-    fetch("" + process.env.REACT_APP_API + "login", {
+    fetch("" + process.env.REACT_APP_API + "login/password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +98,7 @@ function Login() {
           </div>
           <div className={classes.signUp}>
             <div> No account?</div>
-            <div className={classes.signUpButton}> Sign Up</div>
+            <div className={classes.signUpButton}> <Link to={"/CreateUser"}>Sign Up</Link></div>
           </div>
         </div>
       </div>

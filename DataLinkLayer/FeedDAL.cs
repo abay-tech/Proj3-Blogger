@@ -10,13 +10,13 @@ namespace DataAccessLayer
 {
     public class FeedDAL
     {
-        public SqlConnection? StartConnection()
+        public async Task<SqlConnection?> StartConnection()
         {
             string connectionString = @"Data Source=DESKTOP-H9T9SKL;Initial Catalog=tester; User ID=sa;Password=RPSsql12345;TrustServerCertificate=True;";
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 return connection;
             }
             catch (Exception e)
@@ -25,10 +25,9 @@ namespace DataAccessLayer
                 return null;
             }
         }
-
-        public List<FeedModel>? ExecuteQuery(SqlConnection connection,SqlCommand command)
+        public async Task<List<FeedModel>?> ExecuteQueryAsync(SqlConnection connection,SqlCommand command)
         {
-            SqlDataReader reader = command.ExecuteReader();
+            SqlDataReader reader =await command.ExecuteReaderAsync();
             List<FeedModel> feedList = new List<FeedModel>();
 
             if (reader.HasRows)
@@ -55,9 +54,9 @@ namespace DataAccessLayer
             connection.Close();
             return feedList;
         }
-        public List<FeedModel>? GetListDAL(int skipNum, int category_id)
+        public async Task<List<FeedModel>?> GetListDALAsync(int skipNum, int category_id)
         {
-            SqlConnection? connection = StartConnection();
+            SqlConnection? connection = await StartConnection();
             if (connection == null)
             {
                 return null;
@@ -87,8 +86,8 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@SKIPNUM", skipNum);
                 command.Parameters.AddWithValue("@CATEGORY_ID", category_id);
 
-                return ExecuteQuery(connection,command);    //why are you sending connection bruh
-               
+                var data=await ExecuteQueryAsync(connection,command);    //why are you sending connection bruh
+                return data;
             }
             catch (Exception ex)
             {
@@ -97,9 +96,9 @@ namespace DataAccessLayer
             }
 
         }
-        public List<FeedModel>? GetFeedDataFavDAL(string feedIds)
+        public async Task<List<FeedModel>?> GetFeedDataFavDALAsync(string feedIds)
         {
-            SqlConnection? connection = StartConnection();
+            SqlConnection? connection =await StartConnection();
             if (connection == null)
             {
                 return null;
@@ -113,7 +112,8 @@ namespace DataAccessLayer
             {
                 SqlCommand command = new SqlCommand(query, connection);
 
-                return ExecuteQuery(connection, command);                
+                var data=await ExecuteQueryAsync(connection, command);
+                return data;
             }
             catch (Exception ex)
             {
@@ -121,9 +121,9 @@ namespace DataAccessLayer
                 return null;
             }
         }
-        public List<FeedModel>? GetTopFeedsDAL()
+        public async Task<List<FeedModel>?> GetTopFeedsDALAsync()
         {
-            SqlConnection? connection = StartConnection();
+            SqlConnection? connection =await StartConnection();
             if (connection == null)
             {
                 return null;
@@ -136,7 +136,8 @@ namespace DataAccessLayer
             try
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                return ExecuteQuery(connection, command);           
+                var data= await ExecuteQueryAsync(connection, command);
+                return data;
             }
             catch (Exception ex)
             {

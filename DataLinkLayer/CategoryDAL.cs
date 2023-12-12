@@ -10,13 +10,13 @@ namespace DataAccessLayer
 {
     public class CategoryDAL
     {
-        public SqlConnection? StartConnection()
+        public async Task<SqlConnection?> StartConnection()
         {
             string connectionString = @"Data Source=DESKTOP-H9T9SKL;Initial Catalog=tester; User ID=sa;Password=RPSsql12345;TrustServerCertificate=True;";
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 return connection;
             }
             catch (Exception e)
@@ -25,14 +25,14 @@ namespace DataAccessLayer
                 return null;
             }
         }
-        public List<CategoryModel>? ExecuteQuery(SqlConnection connection, string query)
+        public async Task<List<CategoryModel>?> ExecuteQueryAsync(SqlConnection connection, string query)
         {
             List<CategoryModel> categoryList = new List<CategoryModel>();
             try
             {
                 SqlCommand command = new SqlCommand(query, connection);
 
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader =await command.ExecuteReaderAsync();
                 while (reader.Read())
                 {
                     CategoryModel category = new CategoryModel();
@@ -51,26 +51,28 @@ namespace DataAccessLayer
             connection.Close();
             return categoryList;
         }
-        public List<CategoryModel>? GetTopDAL()
+        public async Task<List<CategoryModel>?> GetTopDALAsync()
         {
-            SqlConnection? connection= StartConnection();
+            SqlConnection? connection=await StartConnection();
             if (connection == null){
                 return null;
             }
             else{
                 string query = $"select top 10 * from proj3_categorydata order by 'hits' desc ;";
-                return ExecuteQuery(connection, query);
+                var data=await ExecuteQueryAsync(connection, query);
+                return data;
             }           
         }
-        public List<CategoryModel>? GetAllDAL()
+        public async Task<List<CategoryModel>?> GetAllDALAsync()
         {
-            SqlConnection? connection = StartConnection();
+            SqlConnection? connection =await StartConnection();
             if (connection == null){
                 return null;
             }
             else{
                 string query = $"select * from proj3_categorydata order by 'category_name' ;";
-                return ExecuteQuery(connection, query);
+                var data = await ExecuteQueryAsync(connection, query);
+                return data;
             }
         }
 

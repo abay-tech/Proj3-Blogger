@@ -1,7 +1,9 @@
 ﻿using Blogger_C_.Models;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using System.Text.Json.Nodes;
 
 namespace Blogger_C_.Controllers
 {
@@ -10,50 +12,40 @@ namespace Blogger_C_.Controllers
     //hDYIxpApAeZECKiQ
     public class LoginController : ControllerBase
     {
+        private Services.LoginService _loginService;
+
+        public LoginController()
+        {
+            _loginService=new Services.LoginService();
+        }
        
         [HttpPost]
-        public IActionResult Post(LoginModel loginModel)
+        [Route("password")]
+        public IActionResult LoginPassword(LoginModel loginModel)
         {
-            String message = "Success";
+           var status = _loginService.LoginPassword(loginModel);
+            if (status != null)
+            {
+                return Ok(status);
+            }
+            return BadRequest("Could not login");
+  
+        }
+        [HttpPost]
+        [Route("Create")]
 
-            string connectionString = @"Data Source=DESKTOP-H9T9SKL;Initial Catalog=tester; User ID=sa;Password=RPSsql12345;TrustServerCertificate=True;";
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
+        public IActionResult CreateUser(UserDataModel userDataModel)
+        {
+            var status = _loginService.CreateUserPassword(userDataModel);
+            if (status == true)
             {
-                connection.Open();
-                Console.Write("CONNECTION open");
+                return Ok("user created successfully");
             }
-            catch (Exception e)
+            else if(status ==false)
             {
-                message = e.Message;
+                return BadRequest("User with similar email exist. Try logging in or use diffrent email");
             }
-            String query = $"select * from proj3_userdata where email=@email and password=@password";
-            try
-            {
-                SqlCommand command=new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@email", loginModel.email);
-                command.Parameters.AddWithValue("@password", loginModel.password);
-                SqlDataReader reader = command.ExecuteReader();
-               if(reader.HasRows)
-                {
-                 
-                    reader.Close();
-                    return Ok("SUCCESS");
-                }
-                else
-                {
-
-                    reader.Close();
-                    return BadRequest("NOT DETECTED");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            connection.Close();
-            return BadRequest("NOT DETECTED");
-
+            return BadRequest("Could not create user");//if null
         }
     }
 }

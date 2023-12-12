@@ -15,18 +15,18 @@ namespace Blogger_C_.Controllers
         }
 
         [HttpGet("gettop")]
-        public IActionResult GetTop()
+        public async Task<IActionResult> GetTop()
         {
-           var data=_categoryService.GetTop();
+           var data=await _categoryService.GetTopAsync();
             if(data==null)
                     return BadRequest("Something bad happened");
             return Ok(data);
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var data = _categoryService.GetAll();
+            var data= await _categoryService.GetAllAsync();
             if (data == null)
                 return BadRequest("Something bad happened");
             return Ok(data);

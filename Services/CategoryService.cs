@@ -15,17 +15,17 @@ namespace Services
             _categoryDAL=new DataAccessLayer.CategoryDAL();
         }
 
-        public List<CategoryModel>? GetTop()
+        public async Task<List<CategoryModel>?> GetTopAsync()
         {         
-                var data = _categoryDAL.GetTopDAL();
+                var data =await _categoryDAL.GetTopDALAsync();
                 if (data != null){
                     return data;
                 }
             return null;
         }
-        public List<CategoryModel>? GetAll()
+        public async Task<List<CategoryModel>?>? GetAllAsync()
         {
-                var data = _categoryDAL.GetAllDAL();
+                var data =await _categoryDAL.GetAllDALAsync();
                 if (data != null)
                 {
                     return data;

@@ -18,9 +18,9 @@ namespace Blogger_C_.Controllers
         }
 
         [HttpGet("feedlist")]
-        public IActionResult? GetList(int skipNum,int category_id)
+        public async Task<IActionResult?> GetList(int skipNum,int category_id)
         {
-           var data=_feedService.GetList(skipNum, category_id);
+           var data=await _feedService.GetListAsync(skipNum, category_id);
             if (data != null)
             {
                 return Ok(data);
@@ -30,9 +30,9 @@ namespace Blogger_C_.Controllers
         }
 
         [HttpGet("feedData")]
-        public IActionResult? GetFeedData(string feedIds)
+        public async Task<IActionResult?> GetFeedData(string feedIds)
         {
-            var data = _feedService.GetFeedDataFav(feedIds);
+            var data =await _feedService.GetFeedDataFavAsync(feedIds);
             if (data != null)
             {
                 return Ok(data);
@@ -41,9 +41,9 @@ namespace Blogger_C_.Controllers
         }
 
         [HttpGet("topfeed")]
-        public IActionResult? GetTopFeeds()
+        public async Task<IActionResult?> GetTopFeeds()
         {
-            var data = _feedService.GetTopFeeds();
+            var data =await _feedService.GetTopFeedsAsync();
             if (data != null)
             {
                 return Ok(data);
