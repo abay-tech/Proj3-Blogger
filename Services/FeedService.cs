@@ -1,5 +1,6 @@
 ﻿using Blogger_C_.Models;
 using DataAccessLayer;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace Services
             var data = await _feedDAL.GetTopFeedsDALAsync();
             return data;
 
+        }
+        public async Task<ImageModel?> RecieveAsync()
+        {
+            var data = await _feedDAL.RecieveAsync();
+            return data;
         }
     }
 }

@@ -1,24 +1,34 @@
 import MainNav from "../components/MainNav";
 import classes from "./Create.module.css";
-import MoreCategories from "../components/MoreCategories";
 import { useState, useEffect, useRef } from "react";
 import ChooseCategory from "../components/UI/ChooseCategory";
 import bg from "../photos/create.png"
 import plane from "../photos/plane22.png"
-
-
 
 function Create() {
   const [openMoreCategories, setOpenMoreCategories] = useState(false);
   const [allCategories, setAllCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedCategoryName, setSelectedCategoryName] = useState("");
-    const [title,setTitle]=useState("");
-    const [content,setContent]=useState("");
+  const [title,setTitle]=useState("");
+  const [content,setContent]=useState("");
+  const [image,setImage]=useState(null);
 
-    const titleInputRef=useRef();
-    const contentInputRef=useRef();
+  const titleInputRef=useRef();
+  const contentInputRef=useRef();
+  const imageInputRef=useRef();
 
+  function addData(event){
+    event.preventDefault();//to prevent reloading of page on submit
+    if(selectedCategory!=0){
+
+
+
+    }
+    else{
+      alert("Please choose a valid category");
+    }
+  }
 
   useEffect(() => {
     if (openMoreCategories) {
@@ -36,38 +46,53 @@ function Create() {
     if (!openMoreCategories) setOpenMoreCategories(()=>{return true});
     else     setOpenMoreCategories(()=>{return false});
   }
+
   function selectedCategoryhandler(selected_category_id,selected_category_name){
-        setSelectedCategory(()=>{return selected_category_id});
-        setOpenMoreCategories(()=>{return false});
-        setSelectedCategoryName(()=>{return selected_category_name})
+    setSelectedCategory(()=>{return selected_category_id});
+    setOpenMoreCategories(()=>{return false});
+    setSelectedCategoryName(()=>{return selected_category_name})
   }
+
   function updateTitle(){
     setTitle(titleInputRef.current.value);
   }
+
+  function updateImage(event){
+      const reader=new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend=()=>{
+        const base64Image=reader.result;
+        const encoding=base64Image.split(',')[1];
+        console.log(encoding);//here check
+
+        setImage(base64Image);
+    }
+  }
+
   function updateContent(){
     setContent(contentInputRef.current.value);
-}
-{<div className={classes.createHeading}>Create a BLOG!</div>}
+  }
+
+  {<div className={classes.createHeading}>Create a BLOG!</div>}
 
   return (
     <div className={classes.page}>
 
         <div className={classes.bgDiv}>
             <div className={classes.bgDiv2}>
-                <div >
+                <div>  
                 <div className={classes.punchLine}>Unleash your thoughts,<br/> One keystroke at a time!</div>
                 <img className={classes.backGround} src={bg} alt=""></img>
-
                 </div>
                 <img src={plane} className={classes.backGround2}></img>
             </div>
         </div>
 
       <MainNav></MainNav>
-      <div className={classes.mainDiv}>
 
+      <div className={classes.mainDiv}>
         <div className={classes.content}>
-          <form>
+          <form onSubmit={addData}>
 
             <div className={classes.contentDiv}>
               <div>Title</div>
@@ -77,12 +102,17 @@ function Create() {
 
             <div className={classes.contentDiv}>
               <div>MainImage</div>
-                <div>
-                <button className={classes.button} type="button">                <svg className={classes.icon} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M360-400h400L622-580l-92 120-62-80-108 140Zm-40 160q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z"/></svg>
+            <input  required ref={imageInputRef} className={classes.chooseFile} type="file" accept="image/*" onChange={updateImage}/>
+           <div className={classes.userImageDiv}>
+            <img className={classes.userImage} src={image}></img>
+            </div>
+               {/* <div>
+                <button className={classes.button} type="button">    
+                            <svg className={classes.icon} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M360-400h400L622-580l-92 120-62-80-108 140Zm-40 160q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z"/></svg>
                     Select Image</button>
 
-                </div>
-            </div>
+                </div>*/}
+            </div> 
 
             <div className={classes.contentDiv}>
               <div>Choose Category</div>
@@ -100,7 +130,7 @@ function Create() {
 
             </div>
             <div className={classes.submitButtonDiv}>
-                <button type="submit" className={classes.submitButton}>SUBMIT</button>
+                <button type="submit" className={classes.submitButton} >SUBMIT</button>
             </div>
 
           </form>
@@ -108,5 +138,5 @@ function Create() {
       </div>
     </div>
   );
-}
+  }
 export default Create;

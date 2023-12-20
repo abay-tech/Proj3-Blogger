@@ -7,6 +7,7 @@ import Create from "./pages/Create";
 import { createContext,useState } from "react";
 import Favorites from "./pages/Favorites";
 import CreateUser from "./pages/CreateUser";
+import Playground from "./pages/Playground";
 
 export const feedContext = createContext();
 
@@ -28,6 +29,8 @@ function App() {
           <Route path="/create" element={<Create />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/createUser" element={<CreateUser/>} />
+          <Route path="/pg" element={<Playground/>} />
+
 
         </Routes>
       </BrowserRouter>{" "}

@@ -72,6 +72,34 @@
   border-width: 2px;
   background-color: rgba(255, 255, 255, 0.767);
 }
+.chooseFile{
+  color: white;
+  background-color: rgba(224, 0, 112, 0.973);
+  border-radius: 8px;
+  padding: 5px;
+  content: 'select';
+  width: fit-content;
+}
+.chooseFile::file-selector-button {
+  background-color: white;
+  border-radius: 6px;
+  border-style:none;
+  padding: 3px 10px;
+  color: rgba(0, 0, 0, 0.87);;
+}
+.userImageDiv{
+  text-align: center;
+  padding: 5px;
+}
+.userImage{
+  max-height: 500px;
+  object-fit: contain;
+  width: 80%;
+  height: auto;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: rgba(224, 0, 112, 0.445);
+}
 .inputContent {
   border-radius: 8px;
   border-color: rgba(224, 0, 112, 0.445);
@@ -95,7 +123,7 @@
   border-style: none;
   border-radius: 8px;
   padding: 8px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .submitButton:hover {
   background-color: rgba(182, 0, 91, 0.973);

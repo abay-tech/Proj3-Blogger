@@ -50,5 +50,13 @@ namespace Blogger_C_.Controllers
             }
             return BadRequest("Something unexpected happened");
         }
+
+        [HttpGet("recieve")]
+
+        public async Task<IActionResult> RecieveImage()
+        {
+            var data= await _feedService.RecieveAsync();
+            return Ok(data);
+        }
     }
 }
