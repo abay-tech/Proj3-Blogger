@@ -32,9 +32,14 @@ namespace Services
             return data;
 
         }
-        public async Task<ImageModel?> RecieveAsync()
+        public async Task<ImageModel?> RecieveAsync(int id)
         {
-            var data = await _feedDAL.RecieveAsync();
+            var data = await _feedDAL.RecieveAsync(id);
+            return data;
+        }
+        public async Task<bool?> SendAsync(ImageModel image)
+        {
+            var data = await _feedDAL.SendAsync(image);
             return data;
         }
     }

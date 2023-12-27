@@ -26,7 +26,7 @@ namespace DataAccessLayer
                 return null;
             }
         }
-        public async Task<List<FeedModel>?> ExecuteQueryAsync(SqlConnection connection, SqlCommand command)
+        public async Task<List<FeedModel>?> ExecuteSQLQueryAsync(SqlConnection connection, SqlCommand command)
         {
             SqlDataReader reader = await command.ExecuteReaderAsync();
             List<FeedModel> feedList = new List<FeedModel>();
@@ -87,7 +87,7 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@SKIPNUM", skipNum);
                 command.Parameters.AddWithValue("@CATEGORY_ID", category_id);
 
-                var data = await ExecuteQueryAsync(connection, command);    //why are you sending connection bruh
+                var data = await ExecuteSQLQueryAsync(connection, command);    //why are you sending connection bruh
                 return data;
             }
             catch (Exception ex)
@@ -113,7 +113,7 @@ namespace DataAccessLayer
             {
                 SqlCommand command = new SqlCommand(query, connection);
 
-                var data = await ExecuteQueryAsync(connection, command);
+                var data = await ExecuteSQLQueryAsync(connection, command);
                 return data;
             }
             catch (Exception ex)
@@ -137,7 +137,7 @@ namespace DataAccessLayer
             try
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                var data = await ExecuteQueryAsync(connection, command);
+                var data = await ExecuteSQLQueryAsync(connection, command);
                 return data;
             }
             catch (Exception ex)
@@ -148,11 +148,9 @@ namespace DataAccessLayer
         }
 
 
-
-        public async Task<ImageModel?> RecieveAsync()
+        public async Task<ImageModel?> RecieveAsync(int id)   
 
         {
-            
             SqlConnection? connection = await StartConnection();
             if (connection == null)
             {
@@ -160,11 +158,12 @@ namespace DataAccessLayer
             }
             else
             {
-                string query = $"select * from proj3_image";
+                string query = $"select * from proj3_image where image_id="+id;
 
                 try
                 {
                    SqlCommand command = new SqlCommand(query, connection);
+                    
                    SqlDataReader reader=await command.ExecuteReaderAsync();
                    ImageModel imageData = new();
 
@@ -176,12 +175,11 @@ namespace DataAccessLayer
                             imageData.image_data = (byte[])reader["image_data"];
                             imageData.file_name = (string)reader["file_name"];    
                             imageData.description = reader.GetString(3);
-
                         }
                     }
                     reader.Close();
                     connection.Close();
-                    File.WriteAllBytes("A:\\Abay\\Coding\\Projects\\Proj1-EmployeeDept\\C#\\EmployeeDepartment\\x.jpg", imageData.image_data);
+                   // File.WriteAllBytes("A:\\Abay\\Coding\\Projects\\Proj1-EmployeeDept\\C#\\EmployeeDepartment\\x.jpg", imageData.image_data);
                     return imageData;
                 }
                 catch (Exception ex)
@@ -189,10 +187,36 @@ namespace DataAccessLayer
                     Console.WriteLine(ex.Message);
                     return null;
                 }
-
-
-                return null;
             }
         }
+
+        public async Task<bool?> SendAsync(ImageModel image)
+        {
+            SqlConnection? connection = await StartConnection();
+            if (connection == null)
+            {
+                return null;
+            }
+            else
+            {
+                string query = $"insert into proj3_image values(convert(varbinary(max),@IMAGE_DATA),'file','file is allright')";
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@IMAGE_DATA", image.image_data);
+
+                    int affected = await command.ExecuteNonQueryAsync();
+
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }              
+            }
+        }
+
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Blogger_C_.Models;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.IIS.Core;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
+using System.Text;
 
 namespace Blogger_C_.Controllers
 {
@@ -52,11 +54,20 @@ namespace Blogger_C_.Controllers
         }
 
         [HttpGet("recieve")]
-
-        public async Task<IActionResult> RecieveImage()
+        public async Task<IActionResult> RecieveImage(int id)
         {
-            var data= await _feedService.RecieveAsync();
+            var data= await _feedService.RecieveAsync(id);
             return Ok(data);
+        }
+
+        [HttpPost("send")]
+        public async Task<IActionResult> SendImage(ImageModel image)
+        {
+            var data = await _feedService.SendAsync(image);
+            if (data == true)
+                return Ok("image uploaded success");
+            else 
+                return BadRequest("ded");
         }
     }
 }

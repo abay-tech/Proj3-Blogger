@@ -22,7 +22,8 @@ function Create() {
     event.preventDefault();//to prevent reloading of page on submit
     if(selectedCategory!=0){
 
-
+      const imageEncoding=image.split(',')[1];
+      //insert API here
 
     }
     else{
@@ -62,9 +63,6 @@ function Create() {
       reader.readAsDataURL(event.target.files[0]);
       reader.onloadend=()=>{
         const base64Image=reader.result;
-        const encoding=base64Image.split(',')[1];
-        console.log(encoding);//here check
-
         setImage(base64Image);
     }
   }
@@ -84,7 +82,7 @@ function Create() {
                 <div className={classes.punchLine}>Unleash your thoughts,<br/> One keystroke at a time!</div>
                 <img className={classes.backGround} src={bg} alt=""></img>
                 </div>
-                <img src={plane} className={classes.backGround2}></img>
+                <img src={plane} className={classes.backGround2} alt=""></img>
             </div>
         </div>
 
@@ -104,13 +102,12 @@ function Create() {
               <div>MainImage</div>
             <input  required ref={imageInputRef} className={classes.chooseFile} type="file" accept="image/*" onChange={updateImage}/>
            <div className={classes.userImageDiv}>
-            <img className={classes.userImage} src={image}></img>
+            {image?<img className={classes.userImage} src={image} alt=""></img>:""}
             </div>
                {/* <div>
                 <button className={classes.button} type="button">    
                             <svg className={classes.icon} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M360-400h400L622-580l-92 120-62-80-108 140Zm-40 160q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z"/></svg>
                     Select Image</button>
-
                 </div>*/}
             </div> 
 

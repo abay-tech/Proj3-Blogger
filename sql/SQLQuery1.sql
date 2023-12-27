@@ -93,7 +93,7 @@ order by id offset 0 rows fetch next 5 rows only
 
 where proj3_feed.id=2;
 
-create table proj3_image(image_id int primary key,
+create table proj3_image(image_id int primary key identity(1,1),
 		image_data varbinary(max),
 		file_name varchar(100),
 		description varchar(255)
@@ -101,5 +101,5 @@ create table proj3_image(image_id int primary key,
 
 select * from proj3_image;
 
-insert into proj3_image values(1,(select * from openrowset(bulk N'A:\Abay\Coding\Projects\Proj1-EmployeeDept\SQL\test.jpg',single_blob)as t1),'file1','test file go woooo')
-/*base64 images are stored here.sure?*/
+insert into proj3_image values((select * from openrowset(bulk N'A:\Abay\Coding\Projects\Proj1-EmployeeDept\SQL\test.jpg',single_blob)as t1),'file1','test file go woooo')
+/*base64 images automatically read as bytes, by c#, from BLOB stored here*/
