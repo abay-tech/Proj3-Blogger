@@ -8,9 +8,11 @@ namespace DataAccessLayer.Models
 {
     public class ImageModel
     {
-        public int image_id { get; set; }
-        public byte[] image_data { get; set; }
-        public string file_name { get; set; }
-        public string description { get; set; }
+        public int? image_id { get; set; }
+        public byte[]? image_data { get; set; }
+        public string? file_name { get; set; }
+        public string? description { get; set; }
+        public int? user_id{ get; set; }
+        public DateTime? upload_time{ get; set; }
     }
 }

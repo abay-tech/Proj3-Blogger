@@ -1,7 +1,7 @@
 .categorylist{
     display: flex;
     flex-wrap: wrap;
-    width: 700px;
+    width: 800px;
     border-style: solid;
     border-radius: 8px;
     border-width: 2px;

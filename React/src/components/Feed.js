@@ -20,20 +20,12 @@ function Feed() {
   useEffect(() => {
     if (hasMore) {
       setIsLoading(true);
-      fetch(
-        "" +
-          process.env.REACT_APP_API +
-          "feed/feedlist?skipnum=" +
-          addFeed +
-          "&category_id=" +
-          category
-      )
+      fetch("" +process.env.REACT_APP_API +"feed/feedlist?skipnum=" +addFeed +"&category_id=" +category)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           if (data.length < 5) {
-            console.log("yup")
             setHasMore(() => {
               return false;
             });

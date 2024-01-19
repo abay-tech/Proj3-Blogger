@@ -1,4 +1,3 @@
-import { createContext, useContext, useState } from "react";
 import Categories from "../components/Categories";
 import Feed from "../components/Feed";
 import MainNav from "../components/MainNav";

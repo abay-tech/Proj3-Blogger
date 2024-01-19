@@ -9,6 +9,7 @@ using System.Text;
 
 namespace Blogger_C_.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class FeedController : ControllerBase
@@ -53,21 +54,15 @@ namespace Blogger_C_.Controllers
             return BadRequest("Something unexpected happened");
         }
 
-        [HttpGet("recieve")]
-        public async Task<IActionResult> RecieveImage(int id)
+        [HttpPost("postfeed")]
+        public async Task<IActionResult?> PostFeed(PostFeedModel postFeed)
         {
-            var data= await _feedService.RecieveAsync(id);
-            return Ok(data);
-        }
-
-        [HttpPost("send")]
-        public async Task<IActionResult> SendImage(ImageModel image)
-        {
-            var data = await _feedService.SendAsync(image);
+            var data = await _feedService.PostFeedAsync(postFeed);
             if (data == true)
-                return Ok("image uploaded success");
-            else 
-                return BadRequest("ded");
+            {
+                return Ok("Successfully added data");
+            }
+            return BadRequest("Something unexpected happened");
         }
     }
 }

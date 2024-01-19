@@ -59,7 +59,7 @@ export default function Playground() {
       <hr />
       <input ref={imageIdRef} placeholder="give id" onChange={setter}></input>
       <button onClick={Reciever}>Press to recieve</button>
-      <img src={`data:image/jpeg;base64,${image}`} style={{ width: "500px", borderRadius:"8px",margin:"0 5px"}} />
+      <img src={`data:image/jpeg;base64,${image}`} style={{ width: "500px", borderRadius:"8px",margin:"0 5px"}} />{/*the ` operator is called template literal in js*/ }
       <hr />
       <input onChange={Uploader} type="file" accept="image/*"></input>
       <img src={sendImage} style={{ width: "500px", borderRadius:"8px",margin:"0 5px"}} />

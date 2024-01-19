@@ -24,6 +24,7 @@ function FeedComponent(props) {
       console.log(filtered)
       setIsBookMarked(false);
       setFavorites(filtered);
+      //alter db to accomodate changes to favorites here
     }
     else {
       var filtered=favorites;
@@ -60,7 +61,7 @@ useEffect(()=>{
         </div>
       <img
         className={classes.img}
-        src={props.feedData.image_link}
+        src={`data:image/jpeg;base64,${props.feedData.image_data}`}
         alt={img1}
       ></img>
       <div className={classes.textData}>

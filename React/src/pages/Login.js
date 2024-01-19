@@ -42,10 +42,7 @@ function Login() {
 
       <div className={classes.bodyBox}>
         <div className={classes.element0}>BLOGGER.OP</div>
-
-        <div className={classes.element1}>
-        Where Words Become Stories: Blogging Made Beautiful
-        </div>
+        <div className={classes.element1}>Where Words Become Stories: Blogging Made Beautiful</div>
         <div className={classes.element2}>BLOGGER.OP</div>
         <div className={classes.element3}>*Terms and Conditions</div>
       </div>
@@ -53,44 +50,22 @@ function Login() {
         <div className={classes.actionCard}>
           <div className={classes.loginBox}>
             <label className={classes.loginlabel}>Login</label>
+            
             <form className={classes.inputForm} onSubmit={submitHandler}>
               <div className={classes.inputFormBlock}>
                 <label>Id</label>
-                <input
-                  type="text"
-                  required
-                  ref={idRef}
-                  className={
-                    loginError
-                      ? classes.InputFormLoginError
-                      : classes.inputFormBlockinput
-                  }
-                ></input>
+                <input type="text"  required ref={idRef} className={loginError? classes.InputFormLoginError: classes.inputFormBlockinput}></input>
               </div>
+
               <div className={classes.inputFormBlock}>
                 <label>Password</label>
-                <input
-                  type="password"
-                  required
-                  ref={passwordRef}
-                  className={
-                    loginError
-                      ? classes.InputFormLoginError
-                      : classes.inputFormBlockinput
-                  }
-                ></input>
-                <label
-                  className={
-                    loginError
-                      ? classes.loginErrorPromptOn
-                      : classes.loginErrorPromptOff
-                  }
-                >
-                  Please check the credentials
-                </label>
+                <input type="password" required ref={passwordRef} className={loginError ? classes.InputFormLoginError: classes.inputFormBlockinput}></input>
+                <label className={loginError ? classes.loginErrorPromptOn: classes.loginErrorPromptOff}>Please check the credentials</label>
               </div>
+
               <button className={classes.inputFormButton}>Login</button>
             </form>
+
             <div className={classes.loginMethods}>
               <img className={classes.icon} src={google} alt=""></img>
               <img className={classes.icon} src={facebook} alt=""></img>

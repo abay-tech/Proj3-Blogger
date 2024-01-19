@@ -1,11 +1,14 @@
 ﻿using Blogger_C_.Models;
 using DataAccessLayer.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DataAccessLayer
 {
@@ -44,6 +47,8 @@ namespace DataAccessLayer
                     feed.image_link = reader.GetString(5);
                     feed.author_name = reader.GetString(6);
                     feed.category_name = reader.GetString(7);
+                    feed.image_id = reader.GetInt32(8);
+                    feed.image_data = (byte[])reader["image_data"];
 
                     feedList.Add(feed);
                 }
@@ -65,19 +70,21 @@ namespace DataAccessLayer
             string query = "";
             if (category_id != 0)
             {
-                query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name " +
+                query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name,proj3_feed.image_id,proj3_image.image_data " +
                                 $"from proj3_feed " +
                                 $"inner join proj3_userdata on proj3_feed.author_id=proj3_userdata.id " +
                                 $"inner join proj3_categorydata on proj3_feed.category_id=proj3_categorydata.id " +
+                                $"inner join proj3_image on proj3_feed.image_id=proj3_image.image_id " +
                                 $" where proj3_feed.category_id=@CATEGORY_ID " +
                                 $"order by id offset @SKIPNUM rows fetch next 5 rows only ";
             }
             else
             {
-                query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name " +
+                query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name,proj3_feed.image_id,proj3_image.image_data " +
                 $"from proj3_feed " +
                 $"inner join proj3_userdata on proj3_feed.author_id=proj3_userdata.id " +
                 $"inner join proj3_categorydata on proj3_feed.category_id=proj3_categorydata.id " +
+                $"inner join proj3_image on proj3_feed.image_id=proj3_image.image_id " +
                 $"order by id offset @SKIPNUM rows fetch next 5 rows only ";
             }
 
@@ -104,10 +111,11 @@ namespace DataAccessLayer
             {
                 return null;
             }
-            string query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name " +
+            string query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name,proj3_feed.image_id,proj3_image.image_data " +
                 $"from proj3_feed " +
                 $"inner join proj3_userdata on proj3_feed.author_id=proj3_userdata.id " +
                 $"inner join proj3_categorydata on proj3_feed.category_id=proj3_categorydata.id " +
+                $"inner join proj3_image on proj3_feed.image_id=proj3_image.image_id " +
                 $"where proj3_feed.id in (" + feedIds + ")";
             try
             {
@@ -129,10 +137,11 @@ namespace DataAccessLayer
             {
                 return null;
             }
-            string query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name " +
+            string query = $"select proj3_feed.id,proj3_feed.title,proj3_feed.author_id,proj3_feed.content,proj3_feed.category_id,proj3_feed.image_link,proj3_userdata.username,proj3_categorydata.category_name,proj3_feed.image_id,proj3_image.image_data " +
                 $"from proj3_feed " +
                 $"inner join proj3_userdata on proj3_feed.author_id=proj3_userdata.id " +
                 $"inner join proj3_categorydata on proj3_feed.category_id=proj3_categorydata.id " +
+                $"inner join proj3_image on proj3_feed.image_id=proj3_image.image_id " +
                 $"order by proj3_feed.hits desc offset 0 rows fetch next 6 rows only";
             try
             {
@@ -146,11 +155,9 @@ namespace DataAccessLayer
                 return null;
             }
         }
-
-
-        public async Task<ImageModel?> RecieveAsync(int id)   
-
+        public async Task<bool?> PostFeedAsync(PostFeedModel postFeed,int? imageId)
         {
+
             SqlConnection? connection = await StartConnection();
             if (connection == null)
             {
@@ -158,29 +165,21 @@ namespace DataAccessLayer
             }
             else
             {
-                string query = $"select * from proj3_image where image_id="+id;
-
+                string query = $"insert into proj3_feed(author_id,title,content,category_id,image_id,image_link,hits) values(@author_id,@title,@content,@category_id,@image_id,'dummy.jepg',1)";
                 try
                 {
-                   SqlCommand command = new SqlCommand(query, connection);
-                    
-                   SqlDataReader reader=await command.ExecuteReaderAsync();
-                   ImageModel imageData = new();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@author_id", postFeed.author_id);
+                    command.Parameters.AddWithValue("@title", postFeed.title);
+                    command.Parameters.AddWithValue("@content", postFeed.content);
+                    command.Parameters.AddWithValue("@category_id", postFeed.category_id);
+                    command.Parameters.AddWithValue("@image_id", imageId);
 
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            imageData.image_id = reader.GetInt32(0);
-                            imageData.image_data = (byte[])reader["image_data"];
-                            imageData.file_name = (string)reader["file_name"];    
-                            imageData.description = reader.GetString(3);
-                        }
-                    }
-                    reader.Close();
+
+                    int affected = await command.ExecuteNonQueryAsync();
+
                     connection.Close();
-                   // File.WriteAllBytes("A:\\Abay\\Coding\\Projects\\Proj1-EmployeeDept\\C#\\EmployeeDepartment\\x.jpg", imageData.image_data);
-                    return imageData;
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -189,7 +188,6 @@ namespace DataAccessLayer
                 }
             }
         }
-
         public async Task<bool?> SendAsync(ImageModel image)
         {
             SqlConnection? connection = await StartConnection();
@@ -199,11 +197,15 @@ namespace DataAccessLayer
             }
             else
             {
-                string query = $"insert into proj3_image values(convert(varbinary(max),@IMAGE_DATA),'file','file is allright')";
+                string query = $"insert into proj3_image values(convert(varbinary(max),@IMAGE_DATA),@FILE_NAME,@DESCRIPTION,@USER_ID,@UPLOADTIME)";
                 try
                 {
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@IMAGE_DATA", image.image_data);
+                    command.Parameters.AddWithValue("@FILE_NAME", image.file_name);
+                    command.Parameters.AddWithValue("@DESCRIPTION", image.description);
+                    command.Parameters.AddWithValue("@USER_ID", image.user_id);
+                    command.Parameters.AddWithValue("@UPLOADTIME", image.upload_time);
 
                     int affected = await command.ExecuteNonQueryAsync();
 
@@ -216,6 +218,38 @@ namespace DataAccessLayer
                     return null;
                 }              
             }
+        }
+        public async Task<int?> ImageFinder(int? userId,DateTime? dateTime)
+        {
+            SqlConnection? connection = await StartConnection();
+            if (connection == null)
+            {
+                return null;
+            }
+            else
+            {
+                string query= $"select image_id from proj3_image where user_id=@USER_ID and upload_time=@DATE_TIME";
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@USER_ID", userId);
+                    command.Parameters.AddWithValue("@DATE_TIME", dateTime);
+
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            return (int)reader["image_id"];
+                        }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+            return null;
         }
 
     }

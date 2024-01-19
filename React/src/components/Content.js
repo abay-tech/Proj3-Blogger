@@ -25,7 +25,7 @@ function Content(props) {
         <div className={classes.block2}>
           <img
             className={classes.img}
-            src={props.data.image_link}
+            src={`data:image/jpeg;base64,${props.data.image_data}`}
             alt="https://images.freeimages.com/image/previews/1f7/kawaii-pineapple-fruit-png-5690110.png"
           ></img>
         </div>

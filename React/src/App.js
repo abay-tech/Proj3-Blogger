@@ -14,13 +14,14 @@ export const feedContext = createContext();
 function App() {
   const [category, setcategory] = useState(0);
   const [favorites,setFavorites]=useState([]);
+  const [userId,setUserId]=useState(1);
 
   function categorySettor(category_id) {
     setcategory(category_id);
   }
 
   return (
-    <feedContext.Provider value={{ category, categorySettor,favorites,setFavorites }}>
+    <feedContext.Provider value={{ category, categorySettor,favorites,setFavorites,userId,setUserId }}>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />

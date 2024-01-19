@@ -1,22 +1,20 @@
-.page {
-}
-.createHeading{
-    position: fixed;
-    left: 0px;
-    bottom: -30px;
 
-    font-size: 90px;
-    font-family: poppins;
-    background: white;
-    color: rgb(0, 0, 0);
-    z-index: 1;
+.createHeading {
+  position: fixed;
+  left: 0px;
+  bottom: -30px;
+
+  font-size: 90px;
+  font-family: poppins;
+  background: white;
+  color: rgb(0, 0, 0);
+  z-index: 1;
 }
 .bgDiv {
   position: fixed;
   margin-top: 80px;
   width: 100%;
   z-index: -1;
-
 }
 .bgDiv2 {
   display: flex;
@@ -30,18 +28,17 @@
   margin-left: 20px;
   margin-top: -60px;
   z-index: -1;
-
 }
 .punchLine {
   font-size: 40px;
-  width:max-content;
+  width: max-content;
   padding: 5px 20px 5px 50px;
   font-family: poppins_light;
- background: linear-gradient(45deg, #FF416C,  rgb(224, 0, 112));
-    color: white;
-    margin-top: 50px;
-    margin-left: -20px;
-    border-radius: 20px;
+  background: linear-gradient(45deg, #ff416c, rgb(224, 0, 112));
+  color: white;
+  margin-top: 50px;
+  margin-left: -20px;
+  border-radius: 20px;
 }
 
 .backGround2 {
@@ -72,26 +69,26 @@
   border-width: 2px;
   background-color: rgba(255, 255, 255, 0.767);
 }
-.chooseFile{
+.chooseFile {
   color: white;
   background-color: rgba(224, 0, 112, 0.973);
   border-radius: 8px;
   padding: 5px;
-  content: 'select';
+  content: "select";
   width: fit-content;
 }
 .chooseFile::file-selector-button {
   background-color: white;
   border-radius: 6px;
-  border-style:none;
+  border-style: none;
   padding: 3px 10px;
-  color: rgba(0, 0, 0, 0.87);;
+  color: rgba(0, 0, 0, 0.87);
 }
-.userImageDiv{
+.userImageDiv {
   text-align: center;
   padding: 5px;
 }
-.userImage{
+.userImage {
   max-height: 500px;
   object-fit: contain;
   width: 80%;
@@ -99,6 +96,10 @@
   border-style: solid;
   border-radius: 8px;
   border-color: rgba(224, 0, 112, 0.445);
+}
+.categoryListHolder{
+  display: flex;
+  justify-content: center;
 }
 .inputContent {
   border-radius: 8px;
@@ -157,9 +158,9 @@
   font-size: 10px;
   text-align: end;
 }
-.icon{
-    fill: white;
-    margin-right: 5px;
+.icon {
+  fill: white;
+  margin-right: 5px;
 }
 @media (max-width: 1800px) {
   .bgDiv2 {
@@ -168,7 +169,6 @@
   .content {
     justify-content: center;
     margin-right: 0px;
-
   }
   .punchLine {
     /*text-align: center;
@@ -180,13 +180,13 @@
     width: 100%;*/
     display: none;
   }
-  .backGround{
+  .backGround {
     opacity: 0.6;
-
   }
   .backGround2 {
     display: none;
   }
+
 }
 @media (max-height: 700px) {
 }
